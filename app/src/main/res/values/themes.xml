@@ -13,4 +13,9 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="ActionBarStyleCustomize" parent="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
+        <item name="android:fontFamily">@font/verdana_bold</item>
+        <item name="android:textColorPrimary">@color/beauty_yellow</item>
+    </style>
 </resources>
