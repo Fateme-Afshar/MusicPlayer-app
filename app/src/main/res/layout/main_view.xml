@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.coordinatorlayout.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/bottom_sheet"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#FFFFFF"
+            app:layout_behavior="@string/bottom_sheet_behavior"
+            app:behavior_hideable="true"
+            app:behavior_peekHeight="70dp"
+            android:fillViewport="true">
+
+            <RelativeLayout
+                android:id="@+id/container_music_info"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/beauty_yellow"
+                android:layout_gravity="bottom"
+                android:background="@color/design_default_color_on_primary"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/imv_cover_footer"
+                    android:layout_width="70dp"
+                    android:layout_height="70dp"
+                    tools:src="@drawable/kamranhoman"
+                    />
+
+                    <TextView
+                        android:id="@+id/tv_song_name_footer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_toEndOf="@+id/imv_cover_footer"
+                        android:layout_toRightOf="@+id/imv_cover_footer"
+                        android:fontFamily="@font/segoe_ui_bold"
+                        android:textColor="@color/black"
+                        android:textSize="15sp"
+
+                        />
+
+                    <TextView
+                        android:id="@+id/tv_singer_name_footer"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginTop="5dp"
+                        android:layout_below="@+id/tv_song_name_footer"
+                        android:layout_toEndOf="@+id/imv_cover_footer"
+                        android:layout_toRightOf="@+id/imv_cover_footer"
+                        android:fontFamily="@font/comici"
+                        android:textColor="@color/black"
+                        android:textSize="15sp" />
+            </RelativeLayout>
+        </androidx.core.widget.NestedScrollView>
+
+
+        <ImageView
+            android:id="@+id/btn_play_bottom_sheet"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_play"
+            app:layout_anchor="@+id/btn_pause_bottom_sheet"
+            app:layout_anchorGravity="center"
+            />
+
+        <ImageView
+            android:id="@+id/btn_pause_bottom_sheet"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_gravity="bottom|right"
+            android:layout_margin="10dp"
+            android:src="@drawable/ic_pause"
+            />
+    </androidx.coordinatorlayout.widget.CoordinatorLayout>
+</layout>
