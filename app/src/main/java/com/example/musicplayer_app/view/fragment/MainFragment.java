@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,6 +19,7 @@ import android.view.ViewGroup;
 
 import com.example.musicplayer_app.R;
 import com.example.musicplayer_app.databinding.FragmentPagerBinding;
+import com.example.musicplayer_app.viewModel.MainViewModel;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -29,6 +31,7 @@ public class MainFragment extends Fragment {
     private static final String PERMISSION=
             Manifest.permission.READ_EXTERNAL_STORAGE;
     private FragmentPagerBinding mBinding;
+    private MainViewModel mViewModel;
 
     public MainFragment() {
         // Required empty public constructor
@@ -44,6 +47,7 @@ public class MainFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mViewModel=new ViewModelProvider(this).get(MainViewModel.class);
     }
 
     @Override
