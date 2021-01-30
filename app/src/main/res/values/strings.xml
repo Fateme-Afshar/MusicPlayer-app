@@ -2,4 +2,5 @@
     <string name="app_name">MusicPlayer-app</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="permission_text">We need this permission for playing your musics, that are on your SD card and Internal card. are you give us this permission?</string>
 </resources>
