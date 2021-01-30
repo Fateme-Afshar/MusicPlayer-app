@@ -1,29 +1,28 @@
 package com.example.musicplayer_app.model;
 
-import android.media.MediaMetadataRetriever;
-import android.os.Build;
-
-import androidx.annotation.RequiresApi;
+import android.net.Uri;
 
 import java.io.Serializable;
-import java.util.Objects;
 import java.util.UUID;
 
 public class Music implements Serializable {
         private UUID mId ;
         private String mName;
         private String mPath;
+        private Uri mImagePath;
         private String mSingerName;
-        private int mDuration;
+        private String mDuration;
         private int mAlbumId;
         private boolean mIsPlaying=false;
 
-    public Music(String name, String singerName, String path, int albumId) {
+    public Music(String name, String singerName, String path, int albumId,String duration,Uri imagePath) {
         mId=UUID.randomUUID();
         mName = name;
         mPath = path;
         mSingerName = singerName;
         mAlbumId = albumId;
+       mDuration =duration;
+       mImagePath=imagePath;
     }
 
     public UUID getId() {
@@ -62,16 +61,26 @@ public class Music implements Serializable {
         mAlbumId = albumId;
     }
 
-    public int getDuration() {
-        return mDuration;
+    public String getDuration() {
+        return extractMusicDurationToTimeFormat(Integer.parseInt(mDuration)/1000);
     }
 
-    public void setDuration(String path) {
-        MediaMetadataRetriever mmr = new MediaMetadataRetriever();
-        mmr.setDataSource(path);
-        String duration = mmr.extractMetadata(MediaMetadataRetriever.METADATA_KEY_DURATION);
+    public Uri getImagePath() {
+        return mImagePath;
+    }
 
-        mDuration=Integer.parseInt(duration);
+    public void setImagePath(Uri imagePath) {
+        mImagePath = imagePath;
+    }
+
+    public void setDuration(String duration) {
+        mDuration = duration;
+    }
+
+    public String extractMusicDurationToTimeFormat(int musicDuration) {
+        int minutes = musicDuration / 60;
+        int secondReminder = minutes % 60;
+        return (minutes < 10 ? "0" + minutes : minutes) + ":" + (secondReminder < 10 ? "0" + secondReminder : secondReminder);
     }
 
     public boolean isPlaying() {

@@ -12,12 +12,14 @@ import androidx.annotation.RequiresApi;
 import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.musicplayer_app.R;
+import com.example.musicplayer_app.adapter.MusicAdapter;
 import com.example.musicplayer_app.databinding.FragmentPagerBinding;
 import com.example.musicplayer_app.viewModel.MainViewModel;
 
@@ -59,8 +61,14 @@ public class MainFragment extends Fragment {
                         R.layout.fragment_pager,
                         container,
                         false);
-
+        setupAdapter();
         return mBinding.getRoot();
+    }
+
+    private void setupAdapter() {
+        MusicAdapter adapter=new MusicAdapter(getActivity(),mViewModel.getMusics());
+        mBinding.recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        mBinding.recyclerView.setAdapter(adapter);
     }
 
     @RequiresApi(api = Build.VERSION_CODES.M)

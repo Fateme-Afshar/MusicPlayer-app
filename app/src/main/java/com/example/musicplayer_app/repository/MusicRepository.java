@@ -1,5 +1,6 @@
 package com.example.musicplayer_app.repository;
 
+import android.content.ContentUris;
 import android.content.Context;
 import android.database.Cursor;
 import android.net.Uri;
@@ -11,6 +12,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class MusicRepository {
+    public static final String BASE_URI_ALBUM_ART =
+            "content://media/external/audio/albumart";
 
     public static Map<Integer,Music> getMusics(Context context){
         Map<Integer,Music> musicMap=new HashMap<>();
@@ -47,7 +50,12 @@ public class MusicRepository {
         String singerName=cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.ARTIST));
         String path=cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DATA));
         int albumId=cursor.getInt(cursor.getColumnIndex(MediaStore.Audio.Media.ALBUM_ID));
+        String duration=cursor.getString(cursor.getColumnIndex(MediaStore.Audio.Media.DURATION));
 
-        return new Music(name,singerName,path,albumId);
+        Uri artworkUri = Uri
+                .parse(BASE_URI_ALBUM_ART);
+        Uri imagePath = ContentUris.withAppendedId(artworkUri, albumId);
+
+        return new Music(name,singerName,path,albumId,duration,imagePath);
     }
 }
