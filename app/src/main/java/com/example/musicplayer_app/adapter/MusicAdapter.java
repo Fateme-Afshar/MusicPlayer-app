@@ -3,6 +3,7 @@ package com.example.musicplayer_app.adapter;
 import android.content.Context;
 import android.os.Build;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Filter;
 import android.widget.Filterable;
@@ -54,6 +55,13 @@ public class MusicAdapter extends RecyclerView.Adapter<MusicAdapter.Holder> impl
     @Override
     public void onBindViewHolder(@NonNull Holder holder, int position) {
         holder.bind(mMusicList.get(position));
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCallback.sendMusicInfo(mMusicList.get(position),position);
+            }
+        });
     }
 
     @Override

@@ -5,7 +5,7 @@ import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.os.Build;
 
-import com.example.musicplayer_app.notification.CreateNotification;
+import com.example.musicplayer_app.services.CreateNotification;
 
 public class MusicPlayerApplication extends Application {
 
@@ -13,10 +13,10 @@ public class MusicPlayerApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
-        createChannel();
+     createChannel();
     }
 
-    private void createChannel(){
+  private void createChannel(){
         if (Build.VERSION.SDK_INT>=Build.VERSION_CODES.O) {
             NotificationChannel notificationChannel =
                     new NotificationChannel(CreateNotification.CHANNEL_ID,

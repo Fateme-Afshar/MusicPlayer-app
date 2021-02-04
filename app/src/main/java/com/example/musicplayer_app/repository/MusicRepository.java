@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.provider.MediaStore;
 
+import androidx.lifecycle.MutableLiveData;
+
 import com.example.musicplayer_app.model.Music;
 
 import java.util.HashMap;
@@ -14,6 +16,7 @@ import java.util.Map;
 public class MusicRepository {
     public static final String BASE_URI_ALBUM_ART =
             "content://media/external/audio/albumart";
+    public static MutableLiveData<Music> mMusicMutableLiveData=new MutableLiveData<>();
 
     public static Map<Integer,Music> getMusics(Context context){
         Map<Integer,Music> musicMap=new HashMap<>();
